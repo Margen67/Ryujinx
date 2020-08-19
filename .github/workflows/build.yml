@@ -1,11 +1,15 @@
 name: Build job
 on:
   push:
-    branches:
-      - master
+    paths-ignore:
+      - '.github/*'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '*.yml'
   pull_request:
-    branches:
-      - '*'
+    paths-ignore:
+      - '.github/*'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '*.yml'
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -14,12 +18,18 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
         configuration: [Debug, Release, Profile Debug, Profile Release]
     name: ${{ runner.os }}), ${{ matrix.configuration }}
+    env:
+      POWERSHELL_TELEMETRY_OPTOUT: 1
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.302
-      - name: Build
-        run: dotnet build -c "${{ matrix.configuration }}"
+      - name: Publish
+        run: dotnet publish -c "${{ matrix.configuration }}"
       - name: Test
         run: dotnet test -c "${{ matrix.configuration }}"
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ runner.os }}-${{ matrix.configuration }}
+          path: Ryujinx\bin
+          if-no-files-found: error
