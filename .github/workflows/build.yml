@@ -17,7 +17,6 @@ jobs:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
         configuration: [Debug, Release, Profile Debug, Profile Release]
-    name: ${{ runner.os }}), ${{ matrix.configuration }}
     env:
       POWERSHELL_TELEMETRY_OPTOUT: 1
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
@@ -33,4 +32,3 @@ jobs:
           name: ${{ runner.os }}-${{ matrix.configuration }}
           path: Ryujinx\bin
           if-no-files-found: error
-# test
