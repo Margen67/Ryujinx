@@ -35,5 +35,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: ${{ runner.os }}-${{ matrix.configuration }}
-          path: Ryujinx/bin
+          path: Ryujinx/bin/${{ matrix.configuration }}/netcoreapp3.1
           if-no-files-found: error
