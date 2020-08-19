@@ -29,10 +29,8 @@ jobs:
         run: dotnet publish -c "${{ matrix.configuration }}"
       - name: Test
         run: dotnet test -c "${{ matrix.configuration }}"
-      - continue-on-error: true
-        run: |
-          ls bin|| ls Ryujinx/bin
-      - uses: actions/upload-artifact@v2
+      - if: matrix.configuration == 'Release' && matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v2
         with:
           name: ${{ runner.os }}-${{ matrix.configuration }}
           path: Ryujinx/bin/${{ matrix.configuration }}/netcoreapp3.1
