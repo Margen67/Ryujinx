@@ -33,3 +33,4 @@ jobs:
           name: ${{ runner.os }}-${{ matrix.configuration }}
           path: Ryujinx\bin
           if-no-files-found: error
+# test
