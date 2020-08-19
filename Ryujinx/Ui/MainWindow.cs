@@ -95,7 +95,7 @@ namespace Ryujinx.Ui
             int monitorWidth  = Display.PrimaryMonitor.Geometry.Width  * Display.PrimaryMonitor.ScaleFactor;
             int monitorHeight = Display.PrimaryMonitor.Geometry.Height * Display.PrimaryMonitor.ScaleFactor;
 
-            this.DefaultWidth  = monitorWidth < 1280 ? monitorWidth : 1280;
+            this.DefaultWidth  = monitorWidth < 1720 ? monitorWidth : 1720;
             this.DefaultHeight = monitorHeight < 760 ? monitorHeight : 760;
 
             this.WindowStateEvent += MainWindow_WindowStateEvent;

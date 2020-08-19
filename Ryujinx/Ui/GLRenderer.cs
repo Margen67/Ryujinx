@@ -18,7 +18,7 @@ namespace Ryujinx.Ui
 {
     public class GlRenderer : GLWidget
     {
-        private const int SwitchPanelWidth  = 1280;
+        private const int SwitchPanelWidth  = 1720;
         private const int SwitchPanelHeight = 720;
         private const int TargetFps         = 60;
 

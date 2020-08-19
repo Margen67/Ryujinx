@@ -218,7 +218,7 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletOE.ApplicationProxyService.Applicati
 
             ResultCode resultCode = ResultCode.InvalidParameters;
 
-            if (((transferMemorySize & 0x3FFFF) == 0) && width <= 1280 && height <= 720)
+            if (((transferMemorySize & 0x3FFFF) == 0) && width <= 1720 && height <= 720)
             {
                 resultCode = InitializeApplicationCopyrightFrameBufferImpl(transferMemoryAddress, transferMemorySize, width, height);
             }

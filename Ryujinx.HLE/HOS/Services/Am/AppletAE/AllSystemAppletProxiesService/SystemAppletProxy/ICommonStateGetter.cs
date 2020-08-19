@@ -103,7 +103,7 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
         // GetDefaultDisplayResolution() -> (u32, u32)
         public ResultCode GetDefaultDisplayResolution(ServiceCtx context)
         {
-            context.ResponseData.Write(1280);
+            context.ResponseData.Write(1720);
             context.ResponseData.Write(720);
 
             return ResultCode.Success;

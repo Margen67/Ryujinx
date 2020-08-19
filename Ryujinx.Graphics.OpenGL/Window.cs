@@ -7,7 +7,7 @@ namespace Ryujinx.Graphics.OpenGL
 {
     class Window : IWindow, IDisposable
     {
-        private const int NativeWidth  = 1280;
+        private const int NativeWidth  = 1720;
         private const int NativeHeight = 720;
 
         private readonly Renderer _renderer;

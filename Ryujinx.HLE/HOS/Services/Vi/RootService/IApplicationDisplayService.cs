@@ -66,7 +66,7 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
             context.Memory.Write((ulong)recBuffPtr, Encoding.ASCII.GetBytes("Default"));
             context.Memory.Write((ulong)recBuffPtr + 0x40, 0x1L);
             context.Memory.Write((ulong)recBuffPtr + 0x48, 0x1L);
-            context.Memory.Write((ulong)recBuffPtr + 0x50, 1280L);
+            context.Memory.Write((ulong)recBuffPtr + 0x50, 1720L);
             context.Memory.Write((ulong)recBuffPtr + 0x58, 720L);
 
             context.ResponseData.Write(1L);
@@ -104,7 +104,7 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
         {
             long displayId = context.RequestData.ReadInt32();
 
-            context.ResponseData.Write(1280);
+            context.ResponseData.Write(1720);
             context.ResponseData.Write(720);
 
             return ResultCode.Success;
