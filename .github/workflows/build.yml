@@ -12,7 +12,7 @@ on:
       - '*.yml'
 jobs:
   build:
-    name: ${{ matrix.os }}) (${{ matrix.configuration }})
+    name: ${{ matrix.os }} (${{ matrix.configuration }})
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -29,9 +29,9 @@ jobs:
         run: dotnet publish -c "${{ matrix.configuration }}"
       - name: Test
         run: dotnet test -c "${{ matrix.configuration }}"
-      - name: ls
+      - continue-on-error: true
         run: |
-          ls bin||ls Ryujinx/bin
+          ls bin|| ls Ryujinx/bin
       - uses: actions/upload-artifact@v2
         with:
           name: ${{ runner.os }}-${{ matrix.configuration }}
