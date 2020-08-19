@@ -1,4 +1,4 @@
-name: "Build job"
+name: Build job
 on:
   push:
     branches:
@@ -12,16 +12,14 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        dotnet: ['3.1.100']
-        environment: ['Debug', 'Release', 'Profile Debug', 'Profile Release']
-    name: ${{ matrix.environment }} build (Dotnet ${{ matrix.dotnet }}, OS ${{ matrix.os }})
+        configuration: [Debug, Release, Profile Debug, Profile Release]
+    name: ${{ runner.os }}), ${{ matrix.configuration }}
     steps:
-      - uses: actions/checkout@master
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{ matrix.dotnet }}
+          dotnet-version: 3.1.302
       - name: Build
-        run: dotnet build -c "${{ matrix.environment }}"
+        run: dotnet build -c "${{ matrix.configuration }}"
       - name: Test
-        run: dotnet test -c "${{ matrix.environment }}"
+        run: dotnet test -c "${{ matrix.configuration }}"
